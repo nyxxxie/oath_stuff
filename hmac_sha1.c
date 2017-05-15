@@ -59,7 +59,7 @@ int hmac_sha1(const uint8_t* key, size_t key_len,
         SHA1_Final(tmp, &ctx);
 
         /* Continue execution using tmp as though it were key */
-        key = key;
+        key = tmp;
         key_len = DIGEST_SIZE;
     }
 
