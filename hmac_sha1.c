@@ -85,7 +85,7 @@ int hmac_sha1(const uint8_t* key, size_t key_len,
 
     /* Process outer hash.  We perform the same optimization as above here. */
     SHA1_Init(&ctx);
-    SHA1_Update(&ctx, outer_block, sizeof(inner_block));
+    SHA1_Update(&ctx, outer_block, sizeof(outer_block));
     SHA1_Update(&ctx, tmp, sizeof(tmp));
     SHA1_Final(hmac_out, &ctx);
 
