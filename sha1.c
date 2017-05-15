@@ -51,7 +51,7 @@ A million repetitions of "a"
 
 /* Hash a single 512-bit block. This is the core of the algorithm. */
 
-void SHA1Transform(
+void SHA1_Transform(
     uint32_t state[5],
     const unsigned char buffer[64]
 )
@@ -179,7 +179,7 @@ void SHA1Transform(
 
 /* SHA1Init - Initialize new context */
 
-void SHA1Init(
+void SHA1_Init(
     SHA1_CTX * context
 )
 {
@@ -195,7 +195,7 @@ void SHA1Init(
 
 /* Run your data through this. */
 
-void SHA1Update(
+void SHA1_Update(
     SHA1_CTX * context,
     const unsigned char *data,
     uint32_t len
@@ -213,10 +213,10 @@ void SHA1Update(
     if ((j + len) > 63)
     {
         memcpy(&context->buffer[j], data, (i = 64 - j));
-        SHA1Transform(context->state, context->buffer);
+        SHA1_Transform(context->state, context->buffer);
         for (; i + 63 < len; i += 64)
         {
-            SHA1Transform(context->state, &data[i]);
+            SHA1_Transform(context->state, &data[i]);
         }
         j = 0;
     }
@@ -228,7 +228,7 @@ void SHA1Update(
 
 /* Add padding and return the message digest. */
 
-void SHA1Final(
+void SHA1_Final(
     unsigned char digest[20],
     SHA1_CTX * context
 )
@@ -262,13 +262,13 @@ void SHA1Final(
     }
 #endif
     c = 0200;
-    SHA1Update(context, &c, 1);
+    SHA1_Update(context, &c, 1);
     while ((context->count[0] & 504) != 448)
     {
         c = 0000;
-        SHA1Update(context, &c, 1);
+        SHA1_Update(context, &c, 1);
     }
-    SHA1Update(context, finalcount, 8); /* Should cause a SHA1Transform() */
+    SHA1_Update(context, finalcount, 8); /* Should cause a SHA1_Transform() */
     for (i = 0; i < 20; i++)
     {
         digest[i] = (unsigned char)
@@ -287,9 +287,9 @@ void SHA1(
     SHA1_CTX ctx;
     unsigned int ii;
 
-    SHA1Init(&ctx);
+    SHA1_Init(&ctx);
     for (ii=0; ii<len; ii+=1)
-        SHA1Update(&ctx, (const unsigned char*)str + ii, 1);
-    SHA1Final((unsigned char *)hash_out, &ctx);
+        SHA1_Update(&ctx, (const unsigned char*)str + ii, 1);
+    SHA1_Final((unsigned char *)hash_out, &ctx);
     hash_out[20] = '\0';
 }

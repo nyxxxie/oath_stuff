@@ -16,22 +16,22 @@ typedef struct
     unsigned char buffer[64];
 } SHA1_CTX;
 
-void SHA1Transform(
+void SHA1_Transform(
     uint32_t state[5],
     const unsigned char buffer[64]
     );
 
-void SHA1Init(
+void SHA1_Init(
     SHA1_CTX * context
     );
 
-void SHA1Update(
+void SHA1_Update(
     SHA1_CTX * context,
     const unsigned char *data,
     uint32_t len
     );
 
-void SHA1Final(
+void SHA1_Final(
     unsigned char digest[20],
     SHA1_CTX * context
     );
