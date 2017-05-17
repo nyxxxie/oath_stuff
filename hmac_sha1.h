@@ -12,6 +12,9 @@ this program; if not, write to the Free Software Foundation, Inc., 51 Franklin
 Street, Fifth Floor, Boston, MA  02110-1301, USA.
 \*****************************************************************************/
 
+#ifndef HMAC_SHA1_H
+#define HMAC_SHA1_H
+
 #include <stdint.h>
 
 /* TODO: test hmac_sha1 against the test vectors published in RFC 2202 */
@@ -19,3 +22,5 @@ Street, Fifth Floor, Boston, MA  02110-1301, USA.
 int hmac_sha1(const uint8_t* key, size_t key_len,
               const uint8_t* in, size_t in_len,
               uint8_t* hmac_out);
+
+#endif // HMAC_SHA1_H
