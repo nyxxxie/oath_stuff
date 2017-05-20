@@ -23,4 +23,4 @@ int hmac_sha1(const uint8_t* key, size_t key_len,
               const uint8_t* in, size_t in_len,
               uint8_t* hmac_out);
 
-#endif // HMAC_SHA1_H
+#endif /* HMAC_SHA1_H */
