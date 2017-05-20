@@ -1,6 +1,5 @@
 CLIENT_BIN=oath
-CLIENT_OBJ=main.o sha1.o hmac_sha1.o
-
+CLIENT_OBJ=main.o sha1.o hmac_sha1.o hotp.o
 CFLAGS=-Wall -ansi -pedantic
 
 all: $(CLIENT_BIN)
