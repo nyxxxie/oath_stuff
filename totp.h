@@ -12,4 +12,14 @@ this program; if not, write to the Free Software Foundation, Inc., 51 Franklin
 Street, Fifth Floor, Boston, MA  02110-1301, USA.
 \*****************************************************************************/
 
+#ifndef TOTP_H
+#define TOTP_H
 
+#include <stdint.h>
+#include "hotp.h"
+
+#define TOTP_DEFAULT_TIME_STEP 30
+
+int totp(int digit_amt, const uint8_t* key, size_t key_len, hotp_digits* digits_out);
+
+#endif /* TOTP_H */
