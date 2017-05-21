@@ -37,7 +37,7 @@ int ipow(int base, int exp)
 }
 
 /**
- *
+ * Generates HOTP value.
  *
  * @param[in]  counter    Counter value to generate a one-time password value
  *                        from.
